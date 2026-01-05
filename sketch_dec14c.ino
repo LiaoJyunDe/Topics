@@ -38,10 +38,10 @@ const int httpsPort = 443;
 WiFiSSLClient client;
 
 unsigned long lastEventTime;
-const unsigned long EVENT_COOLDOWN = 15000; // 15 秒
+const unsigned long EVENT_COOLDOWN = 5000;
 
 WiFiUDP ntpUDP;
-NTPClient timeClient(ntpUDP, "pool.ntp.org",0); // 台灣 GMT+8
+NTPClient timeClient(ntpUDP, "pool.ntp.org",0);
 
 unsigned long long lastDay = 0;
 unsigned long lastOSD = 0;
@@ -110,6 +110,7 @@ void setup()
     // Start OSD drawing on RTSP video channel
     OSD.configVideo(CHANNEL, config);
     OSD.begin();
+    facerecog.restoreRegisteredFace();
 }
 
 void loop()
